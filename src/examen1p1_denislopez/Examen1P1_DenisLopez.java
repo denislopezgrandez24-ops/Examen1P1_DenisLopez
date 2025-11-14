@@ -31,12 +31,12 @@ public class Examen1P1_DenisLopez {
                   System.out.println("Ingrese num2: ");
                   int num2 = leer.nextInt();
                   System.out.println(MCM());
-                  System.out.println("El Minimo Comun Multiplo de "+num1+" y "+num2+" es: ");
+                  System.out.print("");
                   break;
                 }
                 case 3:{
                     cifrado();
-                    System.out.println();
+                    System.out.println("");
                 }
                 default: {
                     
@@ -96,9 +96,10 @@ public class Examen1P1_DenisLopez {
             }
             if (residuo==0){
                 residuo3+=num2;
-                MCD=residuo3;
+               
             }
         }
+        MCD = residuo3;
         if (num2>num1){
             formula= num2/num1;
             residuo=num2%num1;
@@ -107,18 +108,19 @@ public class Examen1P1_DenisLopez {
             }
             if (residuo==0){
                 residuo3+=num1;
-                MCD = residuo3;
             }
-        }    
-        return MCD;
+        }
+        MCD = residuo3;
+        formula2 = (num1*num2)/ (MCD);           
+        System.out.println("El Minimo Comun Multiplo de "+num1+" y "+num2+" es: "+formula2);
+        return formula2;
     }
     
     public static void cifrado(){
        System.out.println("Ingrese la cadena a crirar (no puede estar vacia): "); 
-       String cadena = leer.next();
+       String cadena = leer.next().toLowerCase();
        System.out.println("Ingrese el desplazamiento inicial puede ser positivo o negativo, distinto de 0: "); 
        int desplazamiento = leer.nextInt();
-       //String alfabeto = "abcdefghijklmnophrstuvwxyz";
        int cont=0;
        if (cadena==" "){
            System.out.println("ERROR: La cadena no puede estar vacia. Intente de nuevo.");  
@@ -126,18 +128,20 @@ public class Examen1P1_DenisLopez {
        if (desplazamiento==0){
            System.out.println("ERROR: El desplazamiento no puede sero 0. Intente de nuevo.");  
        }
+       while (desplazamiento!=0){
        for (int i=0;i<=cadena.length();i++){
            char letra = cadena.charAt(i);
-               if (desplazamiento<0){
-                  cont+=1;
-                }
-               else{
-                  cont-=1;
-                }
-           
-           
+           if (desplazamiento>0){
+             letra+=1; 
+             
+           }
+           else{
+               letra-=1;
+           } 
+           System.out.println("Cadena cifrada"+letra);
+           }
        }
-        
+       }    
     }
     
-}
+
