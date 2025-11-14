@@ -19,16 +19,31 @@ public class Examen1P1_DenisLopez {
         while (op!=4){
             switch (op){
                 case 1:{
+                    System.out.println("Ingrese el valor de N(entero positivo): ");
+                    int N = leer.nextInt();
+                    System.out.println(calcularSuma(N));
+                    System.out.print("");
                     break;
                 }
                 case 2:{
-                  //MCM();
+                  System.out.println("Ingrese num1: ");  
+                  int num1 = leer.nextInt();
+                  System.out.println("Ingrese num2: ");
+                  int num2 = leer.nextInt();
+                  System.out.println(MCM());
+                  System.out.println("El Minimo Comun Multiplo de "+num1+" y "+num2+" es: ");
                   break;
                 }
+                case 3:{
+                    cifrado();
+                    System.out.println();
+                }
+                default: {
+                    
+                }
             }
-            
+            op = menú();
         }
-        op = menú();
     }
     
     public static int menú(){
@@ -62,38 +77,64 @@ public class Examen1P1_DenisLopez {
         return  parcial;
     }
     
-    //public static int MCM(){
-       // System.out.println("Ingrese num1: ");  
-       // int num1 = leer.nextInt();
-        //System.out.println("Ingrese num2: ");
-       // int num2 = leer.nextInt();
-       //int formula;
-        //int residuo;
-       //int residuo2;
-       // if(num1>num2){
-            //formula= num1/num2;
-            //residuo=num1%num2;
-            //if (residuo!=0){
-                
-          //  }
-            
-        //}
-      //  return ;
-    //}
+    public static int MCM(){
+        System.out.println("Ingrese num1: ");  
+        int num1 = leer.nextInt();
+        System.out.println("Ingrese num2: ");
+        int num2 = leer.nextInt();
+        int formula;
+        int formula2;
+        int residuo;
+        int residuo2;
+        int residuo3=0;
+        int MCD;
+        if(num1>num2){
+            formula= num1/num2;
+            residuo=num1%num2;
+            if (residuo!=0){
+                residuo2=num2/residuo;
+            }
+            if (residuo==0){
+                residuo3+=num2;
+                MCD=residuo3;
+            }
+        }
+        if (num2>num1){
+            formula= num2/num1;
+            residuo=num2%num1;
+            if (residuo!=0){
+                residuo2=num1/residuo;
+            }
+            if (residuo==0){
+                residuo3+=num1;
+                MCD = residuo3;
+            }
+        }    
+        return MCD;
+    }
     
     public static void cifrado(){
        System.out.println("Ingrese la cadena a crirar (no puede estar vacia): "); 
        String cadena = leer.next();
-       String alfabeto = "abcdefghijklmnophrstuvwxyz";
+       System.out.println("Ingrese el desplazamiento inicial puede ser positivo o negativo, distinto de 0: "); 
+       int desplazamiento = leer.nextInt();
+       //String alfabeto = "abcdefghijklmnophrstuvwxyz";
+       int cont=0;
        if (cadena==" "){
            System.out.println("ERROR: La cadena no puede estar vacia. Intente de nuevo.");  
        }
-       System.out.println("Ingrese el desplazamiento inicial puede ser positivo o negativo, distinto de 0: "); 
-       int desplazamiento = leer.nextInt();
        if (desplazamiento==0){
            System.out.println("ERROR: El desplazamiento no puede sero 0. Intente de nuevo.");  
        }
        for (int i=0;i<=cadena.length();i++){
+           char letra = cadena.charAt(i);
+               if (desplazamiento<0){
+                  cont+=1;
+                }
+               else{
+                  cont-=1;
+                }
+           
            
        }
         
